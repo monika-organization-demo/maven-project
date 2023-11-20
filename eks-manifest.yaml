@@ -3,20 +3,20 @@ kind: Deployment
 metadata:
   name: myapp-deployment
   labels:
-    app: myapp
+    env: dev
 spec:
-  replicas: 3
+  replicas: 2
   selector:
     matchLabels:
-      app: myapp
+      env: dev
   template:
     metadata:
       labels:
-        app: myapp
+        env: dev
     spec:
       containers:
       - name: myapp
-        image: 040872219986.dkr.ecr.eu-central-1.amazonaws.com/my-ecr:latest
+        image: 040872219986.dkr.ecr.us-east-1.amazonaws.com/my-ecr-mr:latest
         ports:
         - containerPort: 8080
 ---
@@ -26,7 +26,7 @@ metadata:
   name: "webapp-myapp-svc"             #name of service
 spec:                               #service and pod connection properties
   selector:                         #the selector value of service should match with pod "Label"
-    app: myapp                    #key and value
+    env: dev                    #key and value
   ports:
     - protocol: "TCP"                   #TCP, UDP, TLS
       port: 8080
