@@ -7,12 +7,12 @@ stages
    {steps { git branch: 'master', url: 'https://github.com/monika-organization-demo/maven-project' }}
 
   stage ('execute unit test')
-  {steps { withMaven(globalMavenSettingsConfig: '47647b0c-9e58-4cf5-92f3-65b1d462f328', jdk: 'LocalJDK', maven: 'LocalMVN', mavenSettingsConfig: '81196a3b-651e-4c3b-b090-c747a5367dd8', traceability: true) 
+  {steps { withMaven(globalMavenSettingsConfig: '47647b0c-9e58-4cf5-92f3-65b1d462f328', jdk: 'JAVA', maven: 'MVN', mavenSettingsConfig: '81196a3b-651e-4c3b-b090-c747a5367dd8', traceability: true) 
    { sh 'mvn test' } 
   }}
 
   stage ('code build')
-  {steps { withMaven(globalMavenSettingsConfig: '47647b0c-9e58-4cf5-92f3-65b1d462f328', jdk: 'LocalJDK', maven: 'LocalMVN', mavenSettingsConfig: '81196a3b-651e-4c3b-b090-c747a5367dd8', traceability: true) 
+  {steps { withMaven(globalMavenSettingsConfig: '47647b0c-9e58-4cf5-92f3-65b1d462f328', jdk: 'JAVA', maven: 'MVN', mavenSettingsConfig: '81196a3b-651e-4c3b-b090-c747a5367dd8', traceability: true) 
    { sh 'mvn package' } 
   }}
 
